@@ -1,5 +1,10 @@
 #!/bin/bash
 
+#TODO
+# 1. install JAVA if java not found
+# 2. add option to install android anywhere
+# 3. add option to uninstall android
+
 # Colors
 red='\e[0;33m'
 green='\e[0;32m'
