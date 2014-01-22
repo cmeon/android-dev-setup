@@ -24,9 +24,18 @@ if [ ! -d $DROID_SDK_ROOT ]; then
 # courtesy of http://sed.sourceforge.net/grabbag/scripts/list_urls.sed
     sudo apt-get install ant
 
+# install gradle
+    GRADLE_SETUP_URL=`
+        curl -s http://www.gradle.org/downloads |
+        grep "binaries, sources and documentation" |
+        sed 's/.*href="\([^"]*\)".*$/\1/'`
+    wget $GRADLE_SETUP_URL
+    sudo unzip -q gradle-1.0-bin.zip -d /usr/local/
+    echo "export GRADLE_HOME=/usr/local/gradle-1.0" >> .profile
+    echo "export PATH=$PATH:$GRADLE_HOME/bin" >> .profile
+
     cd $TMP
     wget $DROID_SDK_URL --output-document=android-sdk.tgz
-
     tar -xvzf android-sdk.tgz
     mv android-sdk-linux $HOME
     cd $HOME
